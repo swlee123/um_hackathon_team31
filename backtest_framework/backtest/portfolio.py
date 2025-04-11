@@ -67,27 +67,33 @@ class Portfolio:
     
     
     def sell(self, symbol, quantity, price,trading_fees):
+        
+        # check whether we are holding this equity
         if symbol in self.current_positions:
+            # Check if there is enough position to sell
             if self.current_positions[symbol] >= quantity:
                 self.current_positions[symbol] -= quantity
-                if self.current_positions[symbol] == 0:
-                    del self.current_positions[symbol]
-                    
+
+                # calculate "sell" trading fee 
+                fee = quantity * price * trading_fees
+                
+                # Calculate revenue from the sale
+                revenue = quantity * price - fee
+                # Add the revenue to cash
+                self.cash += revenue
+                
+                self.update_equity_value(price)
+                
+                self.trade_log.append((symbol, quantity, price, 'sell'))
+                print("Sell executed !")
             else:
                 print("No enough position to sell ,current position is ",self.current_positions[symbol])
-        else:
+                
+        # if doenst hold this equity
+        elif symbol not in self.current_positions:
             print(f"No position for {symbol} to sell")
             return
 
-        revenue = quantity * price
-        # Deduct trading fees from the revenue
-        revenue -= revenue * trading_fees
-        # Add the revenue to cash
-        self.cash += revenue
-        self.update_equity_value(price)
-        
-        self.trade_log.append((symbol, quantity, price, 'sell'))
-        
     def hold(self, symbol, quantity):
         # do nothing 
         self.log_equity_value()  # log the equity value without any change

@@ -48,6 +48,16 @@ class Engine:
         df.to_csv("Portfolio_his_eq_val.csv")
         print("Saved to Portfolio_his_eq_val.csv for crosscheck")
 
+        # Double Check the cash and btc value in portfolio
+        
+        print("Cash in Portfolio : ",self.portfolio.cash)
+        last_btc_price = data[self.execution_price].iloc[-1]
+        
+        print(f"BTC position : {self.portfolio.current_positions} BTC last open price : {last_btc_price}")
+        value = self.portfolio.current_positions["BTC"] * last_btc_price
+        print("BTC total value : ",value)
+        print("Total equity (cash + btc) value in usdt :",value+self.portfolio.cash)
+        
         # save log to certain directory
         print("Saving log to directory",self.logger.log_dir)
 
