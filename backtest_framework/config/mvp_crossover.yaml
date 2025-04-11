@@ -32,5 +32,5 @@ assumptions :
 
 quantity_config:
   mode : "percentage" # "percentage" or "fixed"
-  percentage : 0.1 # 10% of the capital
+  percentage : 0.05 # 5% of the capital
   fixed_quantity : 1000 # 1000 USDT

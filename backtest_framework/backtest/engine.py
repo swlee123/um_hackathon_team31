@@ -1,6 +1,6 @@
 from datetime import datetime
 import pandas as pd
-
+from tqdm import tqdm
 
 # class that act as central engine to run the backtest, driving the strategy and managing the portfolio
 
@@ -25,7 +25,7 @@ class Engine:
         data = self.strategy.process_data(data)  # Process data with the strategy
         
         
-        for timestamp, row in data.iterrows():
+        for timestamp, row in tqdm(data.iterrows(), total=len(data), desc="Backtesting Progress"):
             self.current_time = timestamp  # Set the current time for this iteration
 
             # Generate trading signal using the strategy
@@ -42,9 +42,12 @@ class Engine:
             if self.evaluator:
                 self.evaluator.evaluate(self.portfolio)
         
-        # # After the loop ends, we can calculate the final performance metrics
-        # self.calculate_performance()
+        # # After the loop ends, we save the history position history equity value and trade log to crosscheck
         
+        df = pd.DataFrame(self.portfolio.history_equity_value)
+        df.to_csv("Portfolio_his_eq_val.csv")
+        print("Saved to Portfolio_his_eq_val.csv for crosscheck")
+
         # save log to certain directory
         print("Saving log to directory",self.logger.log_dir)
 
@@ -55,7 +58,7 @@ class Engine:
         if signal == 'buy':
             # Execute a market buy order
             quantity = self.calculate_order_quantity(data_row)
-            self.portfolio.buy('BTC', quantity, data_row[self.execution_price])
+            self.portfolio.buy('BTC', quantity, data_row[self.execution_price],self.trading_fees)
             
             if self.logger:
                 self.logger.log_signal(signal,timestamp,data_row[self.execution_price])
@@ -64,7 +67,7 @@ class Engine:
         elif signal == 'sell':
             # Execute a market sell order
             quantity = self.calculate_order_quantity(data_row)
-            self.portfolio.sell('BTC', quantity, data_row[self.execution_price])
+            self.portfolio.sell('BTC', quantity, data_row[self.execution_price],self.trading_fees)
             
             if self.logger:
                 self.logger.log_signal(signal,timestamp,data_row[self.execution_price])
@@ -89,7 +92,10 @@ class Engine:
         if mode == "percentage":
             # Calculate quantity based on a percentage of the portfolio's equity
             percentage = self.quantity_config["percentage"]
-            quantity = (self.portfolio.current_equity_value * percentage) / data_row[self.execution_price]
+            quantity = (self.portfolio.cash * percentage) / data_row[self.execution_price]
+            
+            # print(f"Cash available : {self.portfolio.cash} Calculated quantity: {quantity} for mode: {mode} with percentage: {percentage} of execution price: {data_row[self.execution_price]}")
+            
         elif mode == "fixed":
             # Use a fixed quantity for trading, in usdt
             # Assuming fixed quantity is in USDT
