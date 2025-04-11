@@ -1,0 +1,36 @@
+
+
+strategy_name : testing 1.0
+explaination : this is description for testing 1.0 
+coin_pair : BTCUSDT
+timeframe : 30m  # 1h,30m,15m, 5m, 1m
+
+data_source_path : data\BTC_binance_19_22.csv
+
+initial_capital : 100000.0
+trading_fee : 0.06 
+minimum_trade_frequency : 0.03   # at least 3% of the time 
+
+evaluation : 
+  - sharpe_ratio
+  - max_drawdown
+  - trade
+
+
+plot : 
+# true/false value
+  show_equity_curve : true
+  show_profit_loss : true 
+  show_volume : true
+  show_trades : true 
+
+assumptions : 
+  slippage : 0.00
+  order_always_filled : true
+  always_market_order : true # "true : let say MA crossover happens, then on the next OHLCV candle, buy a certain quantity of BTC."
+  execution_price : "open" # "open", "close", "high", "low"
+
+quantity_config:
+  mode : "percentage" # "percentage" or "fixed"
+  percentage : 0.1 # 10% of the capital
+  fixed_quantity : 1000 # 1000 USDT
