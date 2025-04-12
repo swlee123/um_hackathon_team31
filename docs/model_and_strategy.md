@@ -47,7 +47,7 @@ else:
 
 ```
 
-## 2️⃣ Rule-Based Strategy
+## 2️⃣ HMM Strategy
 
 ### ✅ Overview
 
@@ -63,14 +63,14 @@ The **HMM-Based Strategy** leverages a **Hidden Markov Model (HMM)** to identify
 
 ### ⚙️ Parameters
 
-- **`n_components`**: Number of hidden states in the HMM (e.g., 2 states: Bullish and Bearish).
+- **`n_states`**: Number of hidden states in the HMM (e.g., 3 states: Bullish ,Bearish, Consolidate).
 - **`model_path`**: Path to save/load the trained HMM model.
 
 ## 3️⃣ HMM + NLP Strategy
 
 ### ✅ Overview
 
-The **HMM + NLP Strategy** combines the power of **Hidden Markov Models (HMM)** with **Natural Language Processing (NLP)** to generate trading signals. The strategy first uses the HMM to identify underlying market regimes (such as bullish, bearish, or neutral). Then, it integrates sentiment data derived from NLP techniques (e.g., **VADER Sentiment Analysis**) to provide additional insights into market sentiment. The combination of both market regimes and sentiment analysis leads to more informed trading decisions.
+The **HMM + NLP Strategy** combines the power of **Hidden Markov Models (HMM)** with **Natural Language Processing (NLP)** to generate trading signals. The strategy first uses the HMM to identify underlying market regimes (such as bullish, bearish, or neutral). Then, it integrates sentiment data derived from NLP techniques (e.g., **[VADER Sentiment Analysis](https://github.com/cjhutto/vaderSentiment)** to provide additional insights into market sentiment. The combination of both market regimes and sentiment analysis leads to more informed trading decisions.
 
 ### 📂 Class: `HMMNLPStrategy`
 
@@ -81,6 +81,10 @@ The **HMM + NLP Strategy** combines the power of **Hidden Markov Models (HMM)** 
 | **Signal Logic** | Generates trading signals based on market regimes (HMM) combined with sentiment scores (NLP). |
 
 ### ⚙️ Parameters
+
+
+- **`n_states`**: Number of hidden states in the HMM (e.g., 3 states: Bullish ,Bearish, Consolidate).
+- **`model_path`**: Path to save/load the trained HMM model.
 
 
 ## Summary
