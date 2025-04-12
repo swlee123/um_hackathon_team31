@@ -3,9 +3,11 @@
 strategy_name : testing 1.0
 explaination : this is description for testing 1.0 
 coin_pair : BTCUSDT
+mode : "rule_based" # "rule_based" or "hmm" or "hmm_nlp"
 timeframe : 30m  # 1h,30m,15m, 5m, 1m
 
-data_source_path : data\BTC_binance_19_22.csv
+data_source_path : data\market\BTC_binance_19_22.csv
+sentiment_data_path : data\sentiment\sentiment.csv
 
 initial_capital : 100000.0
 trading_fee : 0.06 

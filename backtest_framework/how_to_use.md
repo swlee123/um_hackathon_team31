@@ -22,3 +22,16 @@ In **./strategy/** , ma_crossover.py is an example strategy implmented from **Ba
 
 ### Evaluation 
 Store evaluation results ( not yet implemented )
+
+
+### How to use the framework ? 
+Use main.py , can refer to code inside
+Define all classes in **./backtest/**, make sure to define your own strategy using **BaseStrategy** AbstractClass 
+
+*strategy = MACrossoverStrategy* is just a simple example
+
+Run : 
+
+```bash
+python main.py
+```

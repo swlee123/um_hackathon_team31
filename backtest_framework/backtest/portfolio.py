@@ -85,7 +85,7 @@ class Portfolio:
                 self.update_equity_value(price)
                 
                 self.trade_log.append((symbol, quantity, price, 'sell'))
-                print("Sell executed !")
+                # print("Sell executed !")
             else:
                 print("No enough position to sell ,current position is ",self.current_positions[symbol])
                 

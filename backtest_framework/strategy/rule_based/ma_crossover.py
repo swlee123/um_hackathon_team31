@@ -1,6 +1,10 @@
 from backtest.base_strategy import BaseStrategy
 import pandas as pd 
 
+# example strategy using moving average crossover
+# this act as an example of how to implement a strategy using the base strategy class for ruled/indicator based strategy
+# hmm_strategy and hmm_nlp_strategy are also derived from this
+
 
 class MACrossoverStrategy(BaseStrategy):
     

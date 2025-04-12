@@ -1,14 +1,16 @@
 import yaml
 import pandas as pd
-from strategy.ma_crossover import MACrossoverStrategy
 from backtest.data_loader import DataLoader
 from backtest.portfolio import Portfolio
 from backtest.engine import Engine
 from backtest.logger import BacktestLogger
+# from strategy.hmm.hmm_strategy import HMMStrategy
+# from strategy.hmm_nlp.hmm_nlp_strategy import HMMNLPStrategy
+from strategy.rule_based.ma_crossover import MACrossoverStrategy
 
 
 # === 1. Load config.yaml ===
-with open("config\mvp_crossover.yaml", 'r') as file:
+with open("config\mvp_config.yaml", 'r') as file:
     config = yaml.safe_load(file)
 
 # === 2. Load data ===
@@ -18,10 +20,22 @@ data_path = config["data_source_path"]
 data_loader = DataLoader(data_path)
 data = data_loader.load()
 
-strategy = MACrossoverStrategy(
-    short_window=5,
-    long_window=20
-)
+
+if config["mode"] == "rule_based":
+    
+    # change accordingly 
+    strategy = MACrossoverStrategy(short_window=5, long_window=20)
+
+# elif config["mode"] == "hmm_nlp":
+#     strategy = HMMNLPStrategy(hmm_model_path="models/hmm/model.pkl",
+#                               nlp_model_path="models/hmm_nlp/sentiment_model.pkl")
+    
+# elif config["mode"] == "hmm":
+#     strategy = HMMStrategy(hmm_model_path="models/hmm/model.pkl")
+    
+else :
+    raise ValueError("Invalid mode specified in config.yaml , available modes are : rule_based, hmm_nlp, hmm")
+    
 
 portfolio = Portfolio(
     initial_capital=config["initial_capital"],

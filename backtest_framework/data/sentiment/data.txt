@@ -1,0 +1,6 @@
+https://www.kaggle.com/datasets/kaushiksuresh147/bitcoin-tweets/data?select=Bitcoin_tweets.csv
+
+link to dataset
+
+feature_selected : 
+user_name,data,user_followers,text,hashtag
