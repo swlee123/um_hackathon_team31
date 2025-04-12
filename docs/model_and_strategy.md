@@ -31,7 +31,7 @@ This strategy uses predefined technical indicators and logical rules to generate
 | **Inherits**     | `BaseStrategy` |
 | **Signal Logic** | Generates signal when short-term MA crosses long-term MA. |
 
-### ⚙️ Parameters
+### ⚙️ Example Parameters
 
 - `short_window`: Number of candles for short-term moving average.
 - `long_window`: Number of candles for long-term moving average.
@@ -66,9 +66,9 @@ The **HMM-Based Strategy** leverages a **Hidden Markov Model (HMM)** to identify
 - **`n_states`**: Number of hidden states in the HMM (e.g., 3 states: Bullish ,Bearish, Consolidate).
 - **`model_path`**: Path to save/load the trained HMM model.
 
-## 3️⃣ HMM + NLP Strategy
+## 3️⃣ HMM + NLP Strategy 
 
-### ✅ Overview
+### ✅ Overview (not yet implemented MVP)
 
 The **HMM + NLP Strategy** combines the power of **Hidden Markov Models (HMM)** with **Natural Language Processing (NLP)** to generate trading signals. The strategy first uses the HMM to identify underlying market regimes (such as bullish, bearish, or neutral). Then, it integrates sentiment data derived from NLP techniques (e.g., **[VADER Sentiment Analysis](https://github.com/cjhutto/vaderSentiment)** to provide additional insights into market sentiment. The combination of both market regimes and sentiment analysis leads to more informed trading decisions.
 
