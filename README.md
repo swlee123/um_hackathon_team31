@@ -8,13 +8,13 @@ Develop a Machine Learning (ML) model that analyzes on-chain data from various s
 
 1. [🚀 Project Overview](#project-overview)
 2. [⚙️ Installation](#installation)
-3. [Conceptual Diagram](\asset\conceptual_diagram.png)
-4. [Class Diagram](\asset\class_diagram.png)
-5. [📊 Model and Strategy Design](docs\model_and_strategy.md)
+3. [Conceptual Diagram](/asset/conceptual_diagram.png)
+4. [Class Diagram](/asset/class_diagram.png)
+5. [📊 Model and Strategy Design](docs/model_and_strategy.md)
 
     This includes technical architecture and details of the design and common assumptions for this backtesting framework,
 
-6. [🔧 YAML Configuration](\docs\configurations.md)
+6. [🔧 YAML Configuration](/docs/configurations.md)
 
 ### Project Overview 
 
