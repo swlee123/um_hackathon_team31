@@ -1,0 +1,17 @@
+certifi==2025.1.31
+charset-normalizer==3.4.1
+colorama==0.4.6
+cybotrade==1.5.3
+dotenv==0.9.9
+idna==3.10
+numpy==2.2.4
+pandas==2.2.3
+python-dateutil==2.9.0.post0
+python-dotenv==1.1.0
+pytz==2025.2
+PyYAML==6.0.2
+requests==2.32.3
+six==1.17.0
+tqdm==4.67.1
+tzdata==2025.2
+urllib3==2.3.0
