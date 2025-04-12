@@ -1,28 +1,53 @@
-# um_hackathon_team31
-
+# um_hackathon_Team31
 
 ## Objective
 Develop a Machine Learning (ML) model that analyzes on-chain data from various sources (e.g., CryptoQuant, Glassnode, Coinglass) to generate an alpha trading strategy that maximizes profit. The model should effectively extract implicit indicators from noisy data to generate profitable trading signals.
 
-It is highly recommended that your model incorporate characteristics of **Hidden Markov Models (HMMs)** to identify deterministic patterns in market movements. **Natural Language Processing (NLP)** attempts at analyzing textual information are also welcome.
+## 📚 Table of Contents
 
-## Requirements
-### Data Sources & Processing
-The model must process data from **multiple sources** such as CryptoQuant, Glassnode, Coinglass and other relevant platforms.
-Data intervals must be **≤ 1 day** (e.g., 4 hours, 10 minutes).
 
-### Model & Strategy Design
-The ML model must identify **implicit market indicators** for alpha generation.
-The model may integrate HMMs to enhance **pattern recognition and regime detection**.
-It should optimize trading signals based on extracted features to** maximize returns**.
+1. [🚀 Project Overview](#project-overview)
+2. [⚙️ Installation](#installation)
+3. [Conceptual Diagram](#)
+4. [Class Diagram](#)
+5. [📊 Model and Strategy Design](#)
 
-### Trading Execution
-The strategy should generate **at least 3% trade signals per data row** to ensure adequate trading frequency.
-Execution logic should be based on the **predicted market states** or **sentiment shifts**.
-Trading fees of **0.06%** must be accounted for
-Data period used for the backtest should be several years, and the forward test should be at least one year.
+    This includes technical architecture and details of the design and common assumptions for this backtesting framework,
 
-### Success Criteria
-- Sharpe Ratio (SR) ≥ 1.8 (Ensures risk-adjusted returns are sufficiently high)
-- Maximum Drawdown (MDD) ≥ -40% (Limits downside risk exposure)
-- Trade Frequency ≥ 3% per data row (Ensures sufficient trading activity)
+6. [📁 Folder Structure](#)
+7. [🔧 YAML Configuration](\docs\configurations.md)
+
+### Project Overview 
+
+This project is a modular quantitative trading backtesting framework designed to support multiple strategy paradigms including:
+
+- Rule-Based (Technical Analysis)
+
+- Hidden Markov Models (HMM)
+
+- HMM combined with Natural Language Processing (NLP) using VADER Sentiment Analysis
+
+### Installation 
+
+Create a virtual environment 
+```bash
+python -m venv env
+```
+Install required library 
+```bash
+pip install -r requirements.txt
+```
+
+Run the **backtest_framework\main.py** to see example of backtesting under *Rule-Based* mode using MACrossover strategy
+```bash
+python main.py
+```
+
+### Conceptual Diagram
+
+![Conceptual Diagram](#)
+
+### Class Diagram 
+
+![Class Diagram](#)
+
